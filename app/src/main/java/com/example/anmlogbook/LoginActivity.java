@@ -3,7 +3,10 @@ package com.example.anmlogbook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -29,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText editTextMobileNumber, editTextPassword;
     private Button buttonLogin;
     private ProgressDialog progressDialog;
+    InternetCheck internetCheck =new InternetCheck();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                       // Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                       Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 }){
@@ -111,12 +115,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(view == buttonLogin){
             String mobile = editTextMobileNumber.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
+          //  String connection = InternetCheck
             if(TextUtils.isEmpty(mobile)||TextUtils.isEmpty(password)){
                 Toast.makeText(this, "Please enter credentials ...", Toast.LENGTH_SHORT).show();
-            }else{
+            }else if(internetCheck.isConnected(this)){
+
                 loginUser();
+
+            }else{
+
+                Toast.makeText(this, "Oops...! You seem to have no active internet Connection!", Toast.LENGTH_SHORT).show();
             }
 
         }
     }
+
 }

@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">AnmLogBook</string>
+
+    <string-array name="VaccineList">
+        <item>OPV &amp; HEP-0 doses</item>
+        <item>BCG</item>
+        <item>OPV &amp; Penta-1</item>
+        <item>RVV-1</item>
+        <item>IPV-1</item>
+        <item>OPV &amp; Penta-2</item>
+        <item>RVV-2</item>
+        <item>OPV &amp; Penta-3</item>
+        <item>RVV-3</item>
+        <item>IPV-2</item>
+        <item>MR-1</item>
+        <item>DPT,OPV &amp; MR-2</item>
+        <item>5Y-DPT</item>
+        <item>10Y-TD</item>
+        <item>15Y-TD</item>
+        <item>PW-TD1</item>
+        <item>PW-TD2</item>
+    </string-array>
+
 </resources>

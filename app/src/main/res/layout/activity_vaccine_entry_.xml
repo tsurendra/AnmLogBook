@@ -2,13 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/radio_male"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Vaccine_entry_Activity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextChildName"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="33dp"
@@ -17,8 +16,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
+        android:hint="Enter Child Name"
         android:inputType="textPersonName"
-        android:text="Child Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -29,31 +28,32 @@
         android:layout_height="51dp"
         android:layout_marginStart="33dp"
         android:layout_marginLeft="33dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="Vaccine Entry Form"
         android:textSize="30sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextParentName"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="39dp"
         android:layout_marginLeft="39dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="22dp"
         android:layout_marginRight="22dp"
         android:ems="10"
+        android:hint="Enter Parent name"
         android:inputType="textPersonName"
-        android:text="Parent Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextChildName" />
 
     <EditText
         android:id="@+id/editTextDate"
@@ -66,10 +66,9 @@
         android:layout_marginRight="18dp"
         android:ems="10"
         android:hint="Date of Birth"
-        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextParentName" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -77,7 +76,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="43dp"
         android:layout_marginLeft="43dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="18dp"
         android:layout_marginRight="18dp"
         android:orientation="horizontal"
@@ -86,49 +85,68 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextDate">
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/radioMale"
             android:layout_width="175dp"
             android:layout_height="match_parent"
             android:text="Male" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/radioFemale"
             android:layout_width="175dp"
             android:layout_height="match_parent"
             android:text="Female" />
     </RadioGroup>
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="16dp"
-        android:text="OPV &amp; Hepb"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginRight="136dp"
-        android:text="BCG"
+    <TextView
+        android:id="@+id/vaccineSelect"
+        android:layout_width="333dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="28dp"
+        android:background="#E6D8D8"
+        android:scrollbars="vertical"
+        android:text="click to Select vaccine"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextVaccineDate" />
 
-    <CheckBox
-        android:id="@+id/checkBox6"
+    <Button
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="24dp"
-        android:text="OPV-1 &amp; PENTA-1"
+        android:layout_marginStart="165dp"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginRight="158dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/vaccineSelect" />
+
+    <EditText
+        android:id="@+id/editTextVaccineDate"
+        android:layout_width="347dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Date of Vaccination"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/vaccineSelect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
