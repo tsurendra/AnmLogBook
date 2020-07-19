@@ -9,9 +9,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,6 +39,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        if(SharedPrefManager.getInstance(this).isUserLoggedin()){
+            finish();
+            String userdesig = SharedPrefManager.getInstance(this).UserDesignation();
+
+            if(userdesig.equals("MO")){
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                finish();
+            }else if(userdesig.equals("ANM")){
+                startActivity(new Intent(getApplicationContext(),Vaccine_entry_Activity.class));
+                finish();
+            }
+            return;
+
+        }
+
 
         editTextMobileNumber = (EditText)findViewById(R.id.editTextMobileNumber);
         editTextPassword = (EditText)findViewById(R.id.editTextPassword);
@@ -129,5 +146,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
     }
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.anmlogbook;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -7,6 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -105,5 +109,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
 
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu,menu);
+        //getMenuInflater().inflate(R.menu.main_menu,menu);
+        //return  true;
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                SharedPrefManager.getInstance(this).userLogout();
+                finish();
+                startActivity(new Intent(this,LoginActivity.class));
+                break;
+        }
+        return true;
     }
 }

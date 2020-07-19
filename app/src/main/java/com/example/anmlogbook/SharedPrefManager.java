@@ -53,11 +53,22 @@ public class SharedPrefManager {
         return false;
     }
 
+    public boolean isUserMo(){
+        SharedPreferences sharedPreferences =ctx.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
+        if(sharedPreferences.getString(KEY_USER_DESIGNATION,null)== "MO"){
+            return  true;
+        }
+        return false;
+    }
     public boolean userLogout(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
         return true;
+    }
+    public String UserDesignation(){
+        SharedPreferences sharedPreferences =ctx.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_USER_DESIGNATION,null);
     }
 }

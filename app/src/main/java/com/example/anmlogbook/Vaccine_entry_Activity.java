@@ -1,15 +1,20 @@
 package com.example.anmlogbook;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -184,6 +189,16 @@ public class Vaccine_entry_Activity extends AppCompatActivity implements View.On
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
+                         childName.setText("");
+                         parentName.setText("");
+                         dateSelect.setText("");
+                         vaccineDate.setText("");
+                        givenVaccines.clear();
+                        selectedVaccine.setText("Select Vaccine by Clicking here!");
+                        vaccine ="";
+                        selectedRadioButton.setChecked(false);
+
+
                         Toast.makeText(Vaccine_entry_Activity.this,response, Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
@@ -222,6 +237,8 @@ public class Vaccine_entry_Activity extends AppCompatActivity implements View.On
             if (selectedRadioButtonId != -1) {
                 selectedRadioButton = (RadioButton)findViewById(selectedRadioButtonId);
                  gender = selectedRadioButton.getText().toString();
+                // selectedRadioButton.setChecked(false);
+
                // Toast.makeText(this,selectedRbText, Toast.LENGTH_SHORT).show();
             }
             if(TextUtils.isEmpty(child)){
@@ -244,5 +261,27 @@ public class Vaccine_entry_Activity extends AppCompatActivity implements View.On
 
         }
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu,menu);
+        //getMenuInflater().inflate(R.menu.main_menu,menu);
+        //return  true;
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                SharedPrefManager.getInstance(this).userLogout();
+                finish();
+                startActivity(new Intent(this,LoginActivity.class));
+                break;
+        }
+        return true;
     }
 }
